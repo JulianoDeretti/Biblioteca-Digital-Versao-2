@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Digital</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Biblioteca Digital</h1>
+        <p>Sistema de gerenciamento de livros e empréstimos</p>
+        <div id="seletor-modo">
+            <button id="btn-modo-usuario">Modo Usuário</button>
+            <button id="btn-modo-funcionario">Modo Funcionário</button>
+        </div>
+    </header>
+
+    <main id="app">
+        <section id="login-funcionario" class="oculto">
+            <h2>Acesso Funcionário</h2>
+            <form id="form-login">
+                <div class="campo-formulario">
+                    <label for="senha-funcionario">Senha:</label>
+                    <input type="password" id="senha-funcionario" required>
+                </div>
+                <div class="campo-formulario">
+                    <label>
+                        <input type="checkbox" id="toggle-senha"> Mostrar senha
+                    </label>
+                </div>
+                <div id="mensagem-erro-login"></div>
+                <button type="submit" class="primario">Entrar</button>
+            </form>
+        </section>
+
+        <section id="usuario-area">
+            <h2>Área do Usuário</h2>
+
+            <div class="accordion-item">
+                <div class="accordion-titulo" data-accordion="buscar-livros">
+                    <h3>Buscar Livros</h3>
+                </div>
+                <div class="accordion-conteudo">
+                    <form id="form-buscar-livros">
+                        <div class="campo-formulario">
+                            <label for="busca-usuario">Buscar por título, autor ou código:</label>
+                            <input type="text" id="busca-usuario" placeholder="Digite para buscar...">
+                        </div>
+                        <button type="submit" class="primario">Buscar</button>
+                    </form>
+                    <div id="resultados-busca"></div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-titulo" data-accordion="meus-alugueis">
+                    <h3>Meus Aluguéis</h3>
+                </div>
+                <div class="accordion-conteudo">
+                    <div id="lista-alugueis-usuario"></div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-titulo" data-accordion="historico-usuario">
+                    <h3>Histórico</h3>
+                </div>
+                <div class="accordion-conteudo">
+                    <div id="historico-tabela"></div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-titulo" data-accordion="livros-lidos">
+                    <h3>Livros que já li</h3>
+                </div>
+                <div class="accordion-conteudo">
+                    <p id="total-livros-lidos" class="texto-destaque">📖 Total de livros lidos: 0</p>
+                    <form id="form-adicionar-lido">
+                        <div class="campo-formulario">
+                            <label for="nome-livro-lido">Nome do livro:</label>
+                            <input type="text" id="nome-livro-lido" required>
+                        </div>
+                        <div class="campo-formulario">
+                            <label for="autor-livro-lido">Autor:</label>
+                            <input type="text" id="autor-livro-lido">
+                        </div>
+                        <button type="submit" class="primario">Adicionar</button>
+                    </form>
+                    <div id="lista-livros-lidos"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="funcionario-area" class="oculto">
+            <h2>Área do Funcionário</h2>
+
+            <div class="accordion-item">
+                <div class="accordion-titulo" data-accordion="acervo">
+                    <h3>Acervo</h3>
+                </div>
+                <div class="accordion-conteudo">
+                    <h4>Adicionar Livro</h4>
+                    <form id="form-adicionar-livro">
+                        <div class="campo-formulario">
+                            <label for="titulo-livro">Título:</label>
+                            <input type="text" id="titulo-livro" required>
+                        </div>
+                        <div class="campo-formulario">
+                            <label for="autor-livro">Autor:</label>
+                            <input type="text" id="autor-livro" required>
+                        </div>
+                        <div class="campo-formulario">
+                            <label for="quantidade-livro">Quantidade:</label>
+                            <input type="number" id="quantidade-livro" min="0" required>
+                        </div>
+                        <div class="campo-formulario">
+                            <label for="imagem-livro">URL da Imagem:</label>
+                            <input type="text" id="imagem-livro">
+                        </div>
+                        <button type="submit" class="primario">Adicionar Livro</button>
+                    </form>
+
+                    <h4>Lista de Livros</h4>
+                    <div id="lista-acervo"></div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-titulo" data-accordion="emprestimos">
+                    <h3>Empréstimos</h3>
+                </div>
+                <div class="accordion-conteudo">
+                    <div id="lista-emprestimos"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Biblioteca Digital © 2026</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
